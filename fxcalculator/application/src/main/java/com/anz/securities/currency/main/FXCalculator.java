@@ -27,13 +27,11 @@ public class FXCalculator {
 			String amount = "120";
 			
 			FXCalculator fxCalculator = new FXCalculator();
-			fxCalculator.validateUserInput(sourceCurrency, destCurrency, amount);
-
-
-			findPath(rules, sourceCurrency, destCurrency);
-
+			UserInputDto userDto = fxCalculator.validateUserInput(sourceCurrency, destCurrency, amount);
+			fxCalculator.performConversion(userDto);
+			
 		} catch (Exception ex) {
-
+			logger.error("Error running main application" + ex);
 		}
 	}
 
@@ -41,42 +39,31 @@ public class FXCalculator {
 			throws ValidationException {
 		UserInputDto userDto = new UserInputDto();
 		try {
-			
-
-		} catch (Exception exValidation) {
-
-		}
-
-		return false;
-
-	}
-
-	private static void findPath(ConversionRules rules, String src, String dest) {
-		ConversionRule myrule;
-		String temp = src;
-		do {
-			// logger.info("temp --" + temp);
-			List<ConversionRule> ruleList = rules.getRule(temp);
-			// logger.info("----" + ruleList.toString() + "-----");
-			// Collections.sort(ruleList);
-			int index = Collections.binarySearch(ruleList, new ConversionRule(dest));
-			// logger.info("----" + index + "-----");
-			myrule = ruleList.get(index);
-			// logger.info("----" + myrule.toString() + "-----");
-			logger.info("----" + temp + "-----");
-			;
-			if (!myrule.getLinkedTo().equals("NA")) {
-				logger.info("----" + myrule.getLinkedTo() + "-----");
-
-			} else {
-				logger.info("----" + dest + "-----");
-				;
+			if ( ! ApplicationData.getSupportedCurrencies().isSupported(srcCurrency) ) {
+				throw new ValidationException("Currency not supported - " + srcCurrency);
 			}
-			temp = myrule.getLinkedTo();
-			// logger.info("----" + myrule.getLinkedTo() + "-----");
-
-		} while (!myrule.getLinkedTo().equals("NA"));
-
+			
+			if ( ! ApplicationData.getSupportedCurrencies().isSupported(destCurrency) ) {
+				throw new ValidationException("Currency not supported - " + destCurrency);				
+			}
+			
+			double amount = Double.parseDouble(amt);
+			
+			userDto.setConversionAmount(amount);
+			userDto.setSourceCurrency(srcCurrency);
+			userDto.setDestinationCurrency(destCurrency);
+			
+		} catch (NumberFormatException exNumberFormat) {
+			logger.error("Incorrect amount format" + exNumberFormat);
+			throw new ValidationException("Incorrect amount format" + exNumberFormat.getMessage());
+		} catch ( Exception ex ) {
+			logger.error("Generic error" + ex);
+			throw new ValidationException("Generic Error" + ex.getMessage());			
+		}
+		return userDto;
 	}
 
+	private void performConversion(UserInputDto userDto) {
+		
+	}
 }
