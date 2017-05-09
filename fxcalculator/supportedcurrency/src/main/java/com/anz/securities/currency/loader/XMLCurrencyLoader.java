@@ -51,7 +51,6 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
 				Node nNode = nList.item(temp);
-				logger.info("Currency Element", nNode.getNodeName());
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 

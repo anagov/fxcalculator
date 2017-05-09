@@ -1,6 +1,8 @@
 package com.anz.securities.currency.dto;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserInputDto {
@@ -10,6 +12,18 @@ public class UserInputDto {
 	private double convertedAmount;
 	private Map<String, Double> conversionSteps = new HashMap<String, Double>();
 	
+	private List<TraversalPath> traversal = new ArrayList<TraversalPath>();
+	
+	public List<TraversalPath> getTraversal() {
+		return traversal;
+	}
+	public void setTraversal(List<TraversalPath> traversal) {
+		this.traversal = traversal;
+	}
+	
+	public void addTraversal(TraversalPath path) {
+		traversal.add(path);
+	}
 	public String getSourceCurrency() {
 		return sourceCurrency;
 	}

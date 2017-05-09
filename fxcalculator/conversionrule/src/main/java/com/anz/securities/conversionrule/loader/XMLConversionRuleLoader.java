@@ -52,7 +52,7 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 				Node nNode = nList.item(temp);
 				Element eElement = (Element) nNode;
 				String currencyId = eElement.getAttribute("id");
-				logger.info("Currency Element" + currencyId);
+				
 				NodeList childNodes = eElement.getElementsByTagName("destinationcurrency");
 				List<ConversionRule> listConversionRules = new ArrayList<ConversionRule>();
 				for (int temp1 = 0; temp1 < childNodes.getLength(); temp1++) {
@@ -68,8 +68,6 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 					converRule.setLinkedTo(linkedTo);
 
 					listConversionRules.add(converRule);
-
-					logger.info("Destination Currency Element" + destCurrencyId + linkedTo + conversiontype);
 				}
 				conversionMap.put(currencyId, listConversionRules);
 			}

@@ -123,7 +123,7 @@
 		</destinationcurrency>	
 		<destinationcurrency id="USD">
 			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
+			<conversiontype>INV</conversiontype>
 		</destinationcurrency>	
 	</sourcecurrency>
 	<sourcecurrency id="CZK">
@@ -431,7 +431,7 @@
 		</destinationcurrency>	
 		<destinationcurrency id="CNY">
 			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
+			<conversiontype>D</conversiontype>
 		</destinationcurrency>	
 		<destinationcurrency id="CZK">
 			<linkedto>EUR</linkedto>

@@ -1,6 +1,7 @@
 package com.anz.securities.conversionrate.dto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ConversionRates {
@@ -21,5 +22,11 @@ public class ConversionRates {
 
 	public void addConversionRate(ConversionRate rate) {
 		conversionRateList.add(rate);
+	}
+	
+	public ConversionRate getConversionRate( String src, String dest ) {
+		int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
+		return conversionRateList.get(index);
+
 	}
 }
