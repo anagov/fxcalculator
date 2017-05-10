@@ -8,9 +8,7 @@
 		<artifactId>fxcalculator</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.anz.securities</groupId>
 	<artifactId>conversionrate</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>conversionrate</name>
 	<url>http://maven.apache.org</url>
 	<properties>
