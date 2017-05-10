@@ -8,7 +8,7 @@ import java.util.Map;
 public class UserInputDto {
 	private String sourceCurrency;
 	private String destinationCurrency;
-	private double conversionAmount;
+	private String conversionAmount;
 	private double convertedAmount;
 	private int expectedDecimal;
 	public int getExpectedDecimal() {
@@ -44,10 +44,10 @@ public class UserInputDto {
 	public void setDestinationCurrency(String destinationCurrency) {
 		this.destinationCurrency = destinationCurrency;
 	}
-	public double getConversionAmount() {
+	public String getConversionAmount() {
 		return conversionAmount;
 	}
-	public void setConversionAmount(double conversionAmount) {
+	public void setConversionAmount(String conversionAmount) {
 		this.conversionAmount = conversionAmount;
 	}
 	public double getConvertedAmount() {
