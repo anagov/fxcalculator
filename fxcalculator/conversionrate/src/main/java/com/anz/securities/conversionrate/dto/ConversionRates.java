@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.anz.securities.common.exception.UndefinedConversionRate;
+
 public class ConversionRates {
 
 	private List<ConversionRate> conversionRateList;
@@ -24,9 +26,22 @@ public class ConversionRates {
 		conversionRateList.add(rate);
 	}
 	
-	public ConversionRate getConversionRate( String src, String dest ) {
+	public ConversionRate getConversionRate( String src, String dest ) throws UndefinedConversionRate {
+		String converstionType = "D";
+		Collections.sort(conversionRateList);
 		int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
-		return conversionRateList.get(index);
-
+		System.out.println("The index is " + index);
+		if ( index <=0 ) {
+			converstionType = "INV";
+			index = Collections.binarySearch(conversionRateList, new ConversionRate(dest, src));
+			System.out.println("The index is " + index);
+		}
+		try {
+			ConversionRate rate = conversionRateList.get(index);
+			rate.setConversionType(converstionType);
+			return rate;
+		} catch ( Exception ex ) {
+			throw new UndefinedConversionRate("Rate not defined for");
+		}
 	}
 }

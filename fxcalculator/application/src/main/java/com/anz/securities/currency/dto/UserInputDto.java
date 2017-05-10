@@ -10,6 +10,14 @@ public class UserInputDto {
 	private String destinationCurrency;
 	private double conversionAmount;
 	private double convertedAmount;
+	private int expectedDecimal;
+	public int getExpectedDecimal() {
+		return expectedDecimal;
+	}
+	public void setExpectedDecimal(int expectedDecimal) {
+		this.expectedDecimal = expectedDecimal;
+	}
+
 	private Map<String, Double> conversionSteps = new HashMap<String, Double>();
 	
 	private List<TraversalPath> traversal = new ArrayList<TraversalPath>();
@@ -55,5 +63,7 @@ public class UserInputDto {
 		this.conversionSteps = conversionSteps;
 	}
 
-
+	public void addtConversionStep(String str, Double convrtedAmt) {
+		this.conversionSteps.put(str, convrtedAmt);
+	}
 }

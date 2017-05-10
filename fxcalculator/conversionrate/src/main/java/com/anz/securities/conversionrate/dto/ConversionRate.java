@@ -7,7 +7,8 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 
 	private String sourceCurrency;
 	private String destinationCurrency;
-	private String conversionRate;
+	private String rate;
+	private String conversionType;
 
 	public ConversionRate() {
 	}
@@ -34,11 +35,19 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 	}
 
 	public String getConversionRate() {
-		return conversionRate;
+		return rate;
 	}
 
 	public void setConversionRate(String conversionRate) {
-		this.conversionRate = conversionRate;
+		this.rate = conversionRate;
+	}
+
+	public String getConversionType() {
+		return conversionType;
+	}
+
+	public void setConversionType(String conversionType) {
+		this.conversionType = conversionType;
 	}
 
 	public int compare(ConversionRate o1, ConversionRate o2) {
@@ -68,13 +77,27 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 
 		ConversionRate temp = (ConversionRate) obj;
 
-		return Objects.equals(this.sourceCurrency, temp.getSourceCurrency())
-				&& Objects.equals(this.destinationCurrency, temp.getDestinationCurrency());
+		return this.sourceCurrency.equalsIgnoreCase(temp.getSourceCurrency())
+				&& this.destinationCurrency.equalsIgnoreCase(temp.getDestinationCurrency());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.sourceCurrency) * Objects.hash(this.destinationCurrency);
+		return Objects.hash(this.sourceCurrency, this.destinationCurrency);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Source Currency - ");
+		builder.append(getSourceCurrency());
+		builder.append(" == Destination Currency - ");
+		builder.append(getDestinationCurrency());
+		builder.append(" == Converstion Rate - ");
+		builder.append(getConversionRate());
+		builder.append(" == Converstion Type - ");
+		builder.append(getConversionType());
+		
+		return builder.toString();
+	}
 }
