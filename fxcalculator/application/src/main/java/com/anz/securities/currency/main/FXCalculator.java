@@ -14,14 +14,11 @@ public class FXCalculator {
 
 	public static void main(String[] args) {
 		try {
-			
-
-			
 			String sourceCurrency = "AUD";
 			String destCurrency = "USD";
 			String amount = "120";
 			
-/*			Scanner scanner = new Scanner(System.in);
+			Scanner scanner = new Scanner(System.in);
 	        System.out.println("Enter Source Currency:" );  
 	        sourceCurrency = scanner.next();
 	        
@@ -30,7 +27,8 @@ public class FXCalculator {
 
 	        System.out.println("Enter Amount to be converted:" );  
 	        amount = scanner.next();
-*/
+
+	        
 			UserInputDto userDto = new UserInputDto();
 			
 			userDto.setConversionAmount(amount); 
@@ -39,7 +37,7 @@ public class FXCalculator {
 			
 			Calculation calculation = new CalculationImpl();
 			calculation.perform(userDto);
-			
+			scanner.close();
 			logger.info("Converted Amount is =======" + userDto.getConvertedAmount());
 			
 		} catch (Exception ex) {
