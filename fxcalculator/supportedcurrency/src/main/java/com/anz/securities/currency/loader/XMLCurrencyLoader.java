@@ -64,7 +64,7 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 
 					Element eElement = (Element) nNode;
 					String currencyId = eElement.getAttribute("id");
-					String decimalDisplay = eElement.getElementsByTagName("decimal").item(0).getTextContent();
+					String decimalDisplay = eElement.getAttribute("supportedDecimal");
 					supportedCurrencies.put(currencyId, decimalDisplay);
 				}
 			}
