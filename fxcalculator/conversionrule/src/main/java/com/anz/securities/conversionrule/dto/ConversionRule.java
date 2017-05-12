@@ -19,7 +19,7 @@ public class ConversionRule implements Comparable<ConversionRule> {
 	 * 
 	 * @param currency
 	 */
-	public ConversionRule(String currency) {
+	public ConversionRule(final String currency) {
 		this.currency = currency;
 	}
 
@@ -35,7 +35,7 @@ public class ConversionRule implements Comparable<ConversionRule> {
 	 * 
 	 * @param currency
 	 */
-	public void setCurrency(String currency) {
+	public void setCurrency(final String currency) {
 		this.currency = currency;
 	}
 
@@ -51,14 +51,14 @@ public class ConversionRule implements Comparable<ConversionRule> {
 	 * 
 	 * @param linkedTo
 	 */
-	public void setLinkedTo(String linkedTo) {
+	public void setLinkedTo(final String linkedTo) {
 		this.linkedTo = linkedTo;
 	}
 
 	/**
 	 * 
 	 */
-	public int compareTo(ConversionRule o) {
+	public int compareTo(final ConversionRule o) {
 		return this.currency.compareTo(o.getCurrency());
 	}
 
@@ -66,7 +66,7 @@ public class ConversionRule implements Comparable<ConversionRule> {
 	 * 
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 

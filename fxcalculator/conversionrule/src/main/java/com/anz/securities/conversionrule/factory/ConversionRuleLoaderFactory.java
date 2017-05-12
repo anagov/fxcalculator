@@ -12,16 +12,16 @@ import com.anz.securities.conversionrule.loader.XMLConversionRuleLoader;
  */
 public class ConversionRuleLoaderFactory {
 	
-	private static ConversionRuleLoaderFactory factory;
+	private static final ConversionRuleLoaderFactory factory = new ConversionRuleLoaderFactory();
 	 
+	private ConversionRuleLoaderFactory() {
+		
+	}
 	/**
 	 * 
 	 * @return
 	 */
 	public static ConversionRuleLoaderFactory getInstamce() {
-		if ( factory == null ) {
-			factory = new ConversionRuleLoaderFactory();
-		}
 		return factory;
 	}
 	
@@ -31,7 +31,7 @@ public class ConversionRuleLoaderFactory {
 	 * @return
 	 * @throws LoaderNotSupportedException
 	 */
-	public ConversionRuleLoader getRulesLoader( LoaderType  source) throws LoaderNotSupportedException {
+	public ConversionRuleLoader getRulesLoader( final LoaderType  source) throws LoaderNotSupportedException {
 		
 		if (source == LoaderType.XML ) {
 			return new XMLConversionRuleLoader();

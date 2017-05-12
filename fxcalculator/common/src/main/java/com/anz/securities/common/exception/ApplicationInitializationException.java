@@ -1,8 +1,14 @@
 package com.anz.securities.common.exception;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class ApplicationInitializationException extends Exception {
-
-	public ApplicationInitializationException(String errMessage) {
+	private static final long serialVersionUID = 1L;
+	
+	public ApplicationInitializationException(final String errMessage) {
 		super(errMessage);
 	}
 

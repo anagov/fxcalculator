@@ -12,16 +12,17 @@ import com.anz.securities.conversionrate.loader.XMLConversionRateLoader;
  */
 public class ConversionRateLoaderFactory {
 	
-	private static ConversionRateLoaderFactory factory;
+	private static final ConversionRateLoaderFactory factory = new ConversionRateLoaderFactory();
+	
+	private ConversionRateLoaderFactory() {
+		
+	}
 	
 	/**
 	 * 
 	 * @return
 	 */
 	public static ConversionRateLoaderFactory getInstamce() {
-		if ( factory == null ) {
-			factory = new ConversionRateLoaderFactory();
-		}
 		return factory;
 	}
 	
@@ -31,7 +32,7 @@ public class ConversionRateLoaderFactory {
 	 * @return
 	 * @throws LoaderNotSupportedException
 	 */
-	public ConversionRateLoader getRatesLoader( LoaderType  source) throws LoaderNotSupportedException {
+	public ConversionRateLoader getRatesLoader( final LoaderType  source) throws LoaderNotSupportedException {
 		
 		if (source == LoaderType.XML ) {
 			return new XMLConversionRateLoader();

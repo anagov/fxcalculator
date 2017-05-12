@@ -12,6 +12,8 @@ import com.anz.securities.common.exception.UndefinedConversionRate;
  *
  */
 public class ConversionRates {
+	private static final String CONV_DIRECT = "D";
+	private static final String CONV_INVERT = "INV";
 
 	private List<ConversionRate> conversionRateList;
 
@@ -23,7 +25,7 @@ public class ConversionRates {
 		return conversionRateList;
 	}
 
-	public void setConversionRateList(List<ConversionRate> conversionRateList) {
+	public void setConversionRateList(final List<ConversionRate> conversionRateList) {
 		this.conversionRateList = conversionRateList;
 	}
 
@@ -38,15 +40,13 @@ public class ConversionRates {
 	 * @return
 	 * @throws UndefinedConversionRate
 	 */
-	public ConversionRate getConversionRate( String src, String dest ) throws UndefinedConversionRate {
-		String converstionType = "D";
+	public ConversionRate getConversionRate(final String src, final String dest ) throws UndefinedConversionRate {
+		String converstionType = CONV_DIRECT;
 		Collections.sort(conversionRateList);
 		int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
-		System.out.println("The index is " + index);
 		if ( index <=0 ) {
-			converstionType = "INV";
+			converstionType = CONV_INVERT;
 			index = Collections.binarySearch(conversionRateList, new ConversionRate(dest, src));
-			System.out.println("The index is " + index);
 		}
 		try {
 			ConversionRate rate = conversionRateList.get(index);

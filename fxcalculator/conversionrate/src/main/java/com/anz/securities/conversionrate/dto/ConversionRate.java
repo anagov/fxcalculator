@@ -18,7 +18,7 @@ public class ConversionRate implements Comparable<ConversionRate> {
 	public ConversionRate() {
 	}
 
-	public ConversionRate(String src, String dest) {
+	public ConversionRate(final String src, final String dest) {
 		this.sourceCurrency = src;
 		this.destinationCurrency = dest;
 	}
@@ -27,7 +27,7 @@ public class ConversionRate implements Comparable<ConversionRate> {
 		return sourceCurrency;
 	}
 
-	public void setSourceCurrency(String sourceCurrency) {
+	public void setSourceCurrency(final String sourceCurrency) {
 		this.sourceCurrency = sourceCurrency;
 	}
 
@@ -35,7 +35,7 @@ public class ConversionRate implements Comparable<ConversionRate> {
 		return destinationCurrency;
 	}
 
-	public void setDestinationCurrency(String destinationCurrency) {
+	public void setDestinationCurrency(final String destinationCurrency) {
 		this.destinationCurrency = destinationCurrency;
 	}
 
@@ -43,7 +43,7 @@ public class ConversionRate implements Comparable<ConversionRate> {
 		return rate;
 	}
 
-	public void setConversionRate(String conversionRate) {
+	public void setConversionRate(final String conversionRate) {
 		this.rate = conversionRate;
 	}
 
@@ -51,14 +51,14 @@ public class ConversionRate implements Comparable<ConversionRate> {
 		return conversionType;
 	}
 
-	public void setConversionType(String conversionType) {
+	public void setConversionType(final String conversionType) {
 		this.conversionType = conversionType;
 	}
 
 	/**
 	 * 
 	 */
-	public int compareTo(ConversionRate o) {
+	public int compareTo(final ConversionRate o) {
 		int temp = this.sourceCurrency.compareToIgnoreCase(o.getSourceCurrency());
 		if (temp != 0)
 			return temp;
@@ -69,7 +69,7 @@ public class ConversionRate implements Comparable<ConversionRate> {
 	 * 
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 

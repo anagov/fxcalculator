@@ -14,6 +14,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.anz.securities.common.Constants;
 import com.anz.securities.common.exception.CurrencyLoaderException;
 import com.anz.securities.currency.api.CurrencyLoader;
 import com.anz.securities.currency.dto.SupportedCurrencies;
@@ -24,7 +25,7 @@ import com.anz.securities.currency.dto.SupportedCurrencies;
  *
  */
 public class XMLCurrencyLoader implements CurrencyLoader {
-	private static final String RESOURCE_FILE_NAME = "SupportedCurrencies.xml";
+
 	private static Logger logger = LoggerFactory.getLogger(XMLCurrencyLoader.class);
 	private Map<String, String> supportedCurrencies;
 
@@ -34,7 +35,7 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 	public SupportedCurrencies loadSupportedCurrencies() throws CurrencyLoaderException {
 		SupportedCurrencies supCurrencies = null;
 		try {
-			loadSupportedCurrencies(RESOURCE_FILE_NAME);
+			loadSupportedCurrencies(Constants.SUPPORTED_CURRENCIES_RESOURCE_FILE);
 			supCurrencies = new SupportedCurrencies(supportedCurrencies);
 		} catch (Exception ex) {
 			logger.error("Error loading Currencies" + ex);
@@ -43,7 +44,7 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 		return supCurrencies;
 	}
 
-	private void loadSupportedCurrencies(String fileName) throws CurrencyLoaderException {
+	private void loadSupportedCurrencies(final String fileName) throws CurrencyLoaderException {
 		try {
 
 			InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
@@ -53,7 +54,7 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 
 			doc.getDocumentElement().normalize();
 
-			NodeList nList = doc.getElementsByTagName("currency");
+			NodeList nList = doc.getElementsByTagName(Constants.CURRENCY);
 
 			supportedCurrencies = new HashMap<String, String>();
 			for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -63,8 +64,8 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					String currencyId = eElement.getAttribute("id");
-					String decimalDisplay = eElement.getAttribute("supportedDecimal");
+					String currencyId = eElement.getAttribute(Constants.ID);
+					String decimalDisplay = eElement.getAttribute(Constants.SUPPORTED_DECIMAL);
 					supportedCurrencies.put(currencyId, decimalDisplay);
 				}
 			}

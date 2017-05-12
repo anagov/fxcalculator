@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Conversionrates>
 	<conversionrate>
-		<fromcurrency>AUD</fromcurrency>
-		<tocurrency>USD</tocurrency>
+		<sourcecurrency>AUD</sourcecurrency>
+		<destinationcurrency>USD</destinationcurrency>
 		<rate>0.8371</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>CAD</fromcurrency>
-		<tocurrency>USD</tocurrency>
+		<sourcecurrency>CAD</sourcecurrency>
+		<destinationcurrency>USD</destinationcurrency>
 		<rate>0.8711</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>EUR</fromcurrency>
-		<tocurrency>USD</tocurrency>
+		<sourcecurrency>EUR</sourcecurrency>
+		<destinationcurrency>USD</destinationcurrency>
 		<rate>1.2315</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>USD</fromcurrency>
-		<tocurrency>CNY</tocurrency>
+		<sourcecurrency>USD</sourcecurrency>
+		<destinationcurrency>CNY</destinationcurrency>
 		<rate>6.1715</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>GBP</fromcurrency>
-		<tocurrency>USD</tocurrency>
+		<sourcecurrency>GBP</sourcecurrency>
+		<destinationcurrency>USD</destinationcurrency>
 		<rate>1.5683</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>NZD</fromcurrency>
-		<tocurrency>USD</tocurrency>
+		<sourcecurrency>NZD</sourcecurrency>
+		<destinationcurrency>USD</destinationcurrency>
 		<rate>0.7750</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>USD</fromcurrency>
-		<tocurrency>JPY</tocurrency>
+		<sourcecurrency>USD</sourcecurrency>
+		<destinationcurrency>JPY</destinationcurrency>
 		<rate>119.95</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>EUR</fromcurrency>
-		<tocurrency>CZK</tocurrency>
+		<sourcecurrency>EUR</sourcecurrency>
+		<destinationcurrency>CZK</destinationcurrency>
 		<rate>27.6028</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>EUR</fromcurrency>
-		<tocurrency>DKK</tocurrency>
+		<sourcecurrency>EUR</sourcecurrency>
+		<destinationcurrency>DKK</destinationcurrency>
 		<rate>7.4405</rate>
 	</conversionrate>
 	<conversionrate>
-		<fromcurrency>EUR</fromcurrency>
-		<tocurrency>NOK</tocurrency>
+		<sourcecurrency>EUR</sourcecurrency>
+		<destinationcurrency>NOK</destinationcurrency>
 		<rate>8.6651</rate>
 	</conversionrate>
 </Conversionrates>

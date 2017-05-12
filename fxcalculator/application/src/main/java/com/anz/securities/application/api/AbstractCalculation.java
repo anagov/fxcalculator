@@ -19,7 +19,7 @@ public abstract class AbstractCalculation implements Calculation {
 	/**
 	 * 
 	 */
-	public void perform(UserInputDto userInput) throws CalculationException {
+	public void perform(final UserInputDto userInput) throws CalculationException {
 		try {
 			initializaApplication();
 			validateUserInput(userInput);
@@ -43,13 +43,13 @@ public abstract class AbstractCalculation implements Calculation {
 	 * @param userInput
 	 * @throws ValidationException
 	 */
-	protected abstract void validateUserInput(UserInputDto userInput) throws ValidationException ;
+	protected abstract void validateUserInput(final UserInputDto userInput) throws ValidationException ;
 	
 	/**
 	 * 
 	 * @param userInput
 	 */
-	protected abstract void determinePath(UserInputDto userInput);
+	protected abstract void determinePath(final UserInputDto userInput);
 
 	/**
 	 * 
@@ -57,7 +57,7 @@ public abstract class AbstractCalculation implements Calculation {
 	 * @throws UndefinedConversionRate
 	 * @throws CurrencyNotSupportedException
 	 */
-	protected abstract void convertAmount(UserInputDto userInput)
+	protected abstract void convertAmount(final UserInputDto userInput)
 			throws UndefinedConversionRate, CurrencyNotSupportedException;
 
 }

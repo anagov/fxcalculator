@@ -9,7 +9,7 @@ public class TraversalPath {
 	private String fromCurrency;
 	private String toCurrency;
 
-	public TraversalPath(String from, String to) {
+	public TraversalPath(final String from, final String to) {
 		this.fromCurrency = from;
 		this.toCurrency = to;
 	}

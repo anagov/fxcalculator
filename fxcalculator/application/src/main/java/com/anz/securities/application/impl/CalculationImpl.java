@@ -30,7 +30,7 @@ public class CalculationImpl extends AbstractCalculation {
 	/**
 	 * 
 	 */
-	protected void validateUserInput(UserInputDto userInput) throws ValidationException {
+	protected void validateUserInput( final UserInputDto userInput) throws ValidationException {
 		try {
 			if (!cache.getSupportedCurrencies().isSupported(userInput.getSourceCurrency())) {
 				throw new ValidationException("Currency not supported - " + userInput.getSourceCurrency());
@@ -55,7 +55,7 @@ public class CalculationImpl extends AbstractCalculation {
 	/**
 	 * 
 	 */
-	protected void determinePath(UserInputDto userInput) {
+	protected void determinePath(final UserInputDto userInput) {
 		ConversionRules conversionRules = cache.getConversionRules();
 		String sourceCurrency = userInput.getSourceCurrency();
 		ConversionRule myrule;
@@ -81,7 +81,7 @@ public class CalculationImpl extends AbstractCalculation {
 	 * 
 	 */
 	@Override
-	protected void convertAmount(UserInputDto userInput) throws UndefinedConversionRate, CurrencyNotSupportedException {
+	protected void convertAmount(final UserInputDto userInput) throws UndefinedConversionRate, CurrencyNotSupportedException {
 		ConversionRates rates = cache.getConversionRates();
 		ConversionRate rate;
 
@@ -91,7 +91,7 @@ public class CalculationImpl extends AbstractCalculation {
 		}
 	}
 
-	private void applyCalculation(UserInputDto userInput, ConversionRate rate) throws CurrencyNotSupportedException {
+	private void applyCalculation(final UserInputDto userInput, final ConversionRate rate) throws CurrencyNotSupportedException {
 
 		logger.info("Conversion amount " + userInput.getConvertedAmount());
 		logger.info("Conversion Rate " + rate.getConversionRate());

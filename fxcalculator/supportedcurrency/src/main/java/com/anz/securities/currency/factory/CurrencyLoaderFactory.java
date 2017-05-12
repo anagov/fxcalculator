@@ -10,16 +10,16 @@ import com.anz.securities.currency.loader.XMLCurrencyLoader;
  */
 public class CurrencyLoaderFactory {
 	
-	private volatile static CurrencyLoaderFactory factory = null;
+	private static final CurrencyLoaderFactory factory = new CurrencyLoaderFactory();
 
+	private CurrencyLoaderFactory() {
+		
+	}
 	/**
 	 * 
 	 * @return
 	 */
 	public static synchronized CurrencyLoaderFactory getInstance() {
-		if ( factory == null ) {
-			factory = new CurrencyLoaderFactory();
-		}
 		return factory;
 	}
 	

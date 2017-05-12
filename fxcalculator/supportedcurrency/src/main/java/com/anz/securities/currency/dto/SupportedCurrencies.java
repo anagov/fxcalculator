@@ -12,7 +12,7 @@ import com.anz.securities.common.exception.CurrencyNotSupportedException;
 public class SupportedCurrencies {
 	private Map<String, String> supCurrency;
 
-	public SupportedCurrencies(Map<String, String> supCur) {
+	public SupportedCurrencies(final Map<String, String> supCur) {
 		supCurrency = supCur;
 	}
 
@@ -21,7 +21,7 @@ public class SupportedCurrencies {
 	 * @param currency
 	 * @return
 	 */
-	public boolean isSupported(String currency) {
+	public boolean isSupported(final String currency) {
 		return supCurrency.keySet().contains(currency);
 	}
 
@@ -31,7 +31,7 @@ public class SupportedCurrencies {
 	 * @return
 	 * @throws CurrencyNotSupportedException
 	 */
-	public int getDecimalPlaceSupport(String currency) throws CurrencyNotSupportedException {
+	public int getDecimalPlaceSupport(final String currency) throws CurrencyNotSupportedException {
 
 		if (!supCurrency.keySet().contains(currency)) {
 			throw new CurrencyNotSupportedException("currency not supported");

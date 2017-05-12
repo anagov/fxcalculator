@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.anz.securities.common.Constants;
 import com.anz.securities.common.exception.CurrencyLoaderException;
 import com.anz.securities.common.exception.DataLoaderException;
 import com.anz.securities.conversionrule.api.ConversionRuleLoader;
@@ -28,8 +29,9 @@ import com.anz.securities.conversionrule.dto.ConversionRules;
  *
  */
 public class XMLConversionRuleLoader implements ConversionRuleLoader {
-	private static final String RESOURCE_FILE_NAME = "ConversionRules.xml";
+
 	private static Logger logger = LoggerFactory.getLogger(XMLConversionRuleLoader.class);
+
 
 	/**
 	 * 
@@ -37,7 +39,8 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 	public ConversionRules loadConversionRules() throws DataLoaderException {
 		ConversionRules convRules = new ConversionRules();
 		try {
-			Map<String, List<ConversionRule>> convMap = loadSupportedCurrencies(RESOURCE_FILE_NAME);
+			Map<String, List<ConversionRule>> convMap = loadSupportedCurrencies(
+					Constants.CONVERSION_RULE_RESOURCE_FILE);
 			convRules.setRules(convMap);
 		} catch (Exception ex) {
 			logger.error("Error loading Currencies" + ex);
@@ -46,7 +49,7 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 		return convRules;
 	}
 
-	private Map<String, List<ConversionRule>> loadSupportedCurrencies(String fileName) throws CurrencyLoaderException {
+	private Map<String, List<ConversionRule>> loadSupportedCurrencies( final String fileName) throws CurrencyLoaderException {
 		Map<String, List<ConversionRule>> conversionMap = new HashMap<String, List<ConversionRule>>();
 		try {
 			InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
@@ -55,19 +58,19 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(input);
 			doc.getDocumentElement().normalize();
-			NodeList nList = doc.getElementsByTagName("sourcecurrency");
+			NodeList nList = doc.getElementsByTagName(Constants.SOURCE_CURRENCY);
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				Element eElement = (Element) nNode;
-				String currencyId = eElement.getAttribute("id");
+				String currencyId = eElement.getAttribute(Constants.ID);
 
-				NodeList childNodes = eElement.getElementsByTagName("destinationcurrency");
+				NodeList childNodes = eElement.getElementsByTagName(Constants.DESTINATION_CURRENCY);
 				List<ConversionRule> listConversionRules = new ArrayList<ConversionRule>();
 				for (int temp1 = 0; temp1 < childNodes.getLength(); temp1++) {
 					Node nNode1 = childNodes.item(temp1);
 					Element eElement1 = (Element) nNode1;
-					String destCurrencyId = eElement1.getAttribute("id");
-					String linkedTo = eElement1.getAttribute("linkedto");
+					String destCurrencyId = eElement1.getAttribute(Constants.ID);
+					String linkedTo = eElement1.getAttribute(Constants.LINKED_TO);
 					ConversionRule converRule = new ConversionRule();
 
 					converRule.setCurrency(destCurrencyId);

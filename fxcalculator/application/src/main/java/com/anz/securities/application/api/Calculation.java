@@ -16,5 +16,5 @@ public interface Calculation {
 	 * @param userInput
 	 * @throws CalculationException
 	 */
-	public void perform(UserInputDto userInput) throws CalculationException;
+	public void perform( final UserInputDto userInput) throws CalculationException;
 }

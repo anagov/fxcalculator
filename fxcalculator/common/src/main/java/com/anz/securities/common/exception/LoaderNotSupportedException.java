@@ -1,8 +1,15 @@
 package com.anz.securities.common.exception;
 
-public class LoaderNotSupportedException extends Exception { 
+/**
+ * 
+ * @author xanakat
+ *
+ */
+public class LoaderNotSupportedException extends Exception {
 	
-	public LoaderNotSupportedException( String errMessage ) {
+	private static final long serialVersionUID = 1L;
+	
+	public LoaderNotSupportedException( final String errMessage ) {
 		super(errMessage);
 	}
 

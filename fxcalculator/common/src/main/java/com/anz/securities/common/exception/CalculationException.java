@@ -1,10 +1,15 @@
 package com.anz.securities.common.exception;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class CalculationException extends Exception {
 
-	static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
-	public CalculationException(String errMessage) {
+	public CalculationException(final String errMessage) {
 		super( errMessage );
 	}
 }

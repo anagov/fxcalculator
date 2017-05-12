@@ -30,45 +30,45 @@ public class UserInputDto {
 	public List<TraversalPath> getTraversal() {
 		return traversal;
 	}
-	public void setTraversal(List<TraversalPath> traversal) {
+	public void setTraversal(final List<TraversalPath> traversal) {
 		this.traversal = traversal;
 	}
 	
-	public void addTraversal(TraversalPath path) {
+	public void addTraversal(final TraversalPath path) {
 		traversal.add(path);
 	}
 	public String getSourceCurrency() {
 		return sourceCurrency;
 	}
-	public void setSourceCurrency(String sourceCurrency) {
+	public void setSourceCurrency(final String sourceCurrency) {
 		this.sourceCurrency = sourceCurrency;
 	}
 	public String getDestinationCurrency() {
 		return destinationCurrency;
 	}
-	public void setDestinationCurrency(String destinationCurrency) {
+	public void setDestinationCurrency(final String destinationCurrency) {
 		this.destinationCurrency = destinationCurrency;
 	}
 	public String getConversionAmount() {
 		return conversionAmount;
 	}
-	public void setConversionAmount(String conversionAmount) {
+	public void setConversionAmount(final String conversionAmount) {
 		this.conversionAmount = conversionAmount;
 	}
 	public double getConvertedAmount() {
 		return convertedAmount;
 	}
-	public void setConvertedAmount(double convertedAmount) {
+	public void setConvertedAmount(final double convertedAmount) {
 		this.convertedAmount = convertedAmount;
 	}
 	public Map<String, Double> getConversionSteps() {
 		return conversionSteps;
 	}
-	public void setConversionSteps(Map<String, Double> conversionSteps) {
+	public void setConversionSteps(final Map<String, Double> conversionSteps) {
 		this.conversionSteps = conversionSteps;
 	}
 
-	public void addtConversionStep(String str, Double convrtedAmt) {
+	public void addtConversionStep(final String str, final Double convrtedAmt) {
 		this.conversionSteps.put(str, convrtedAmt);
 	}
 }

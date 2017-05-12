@@ -30,7 +30,7 @@ public class ConversionRules {
 	 * 
 	 * @param rules
 	 */
-	public void setRules(Map<String, List<ConversionRule>> rules) {
+	public void setRules(final Map<String, List<ConversionRule>> rules) {
 		this.rules = rules;
 	}
 
@@ -39,11 +39,11 @@ public class ConversionRules {
 	 * @param currency
 	 * @param rule
 	 */
-	public void addRule(String currency, List<ConversionRule> rule) {
+	public void addRule(final String currency, final List<ConversionRule> rule) {
 		rules.put(currency, rule);
 	}
 	
-	public List<ConversionRule> getRule( String key ) {
+	public List<ConversionRule> getRule( final String key ) {
 		return rules.get(key);
 	}
 
