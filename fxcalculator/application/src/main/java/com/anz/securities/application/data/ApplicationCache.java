@@ -1,10 +1,6 @@
 package com.anz.securities.application.data;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.anz.securities.common.Constants;
-import com.anz.securities.common.dto.LoaderType;
 import com.anz.securities.common.exception.ApplicationInitializationException;
 import com.anz.securities.conversionrate.api.ConversionRateLoader;
 import com.anz.securities.conversionrate.dto.ConversionRates;
@@ -22,7 +18,6 @@ import conm.anz.securities.conversionrate.factory.ConversionRateLoaderFactory;
  *
  */
 public class ApplicationCache {
-	private static Logger logger = LoggerFactory.getLogger(ApplicationCache.class);
 
 	private SupportedCurrencies supportedCurrencies;
 	private ConversionRules conversionRules;
@@ -79,21 +74,15 @@ public class ApplicationCache {
 	 * @throws ApplicationInitializationException
 	 */
 	private void loadApplicationCache() throws ApplicationInitializationException {
-		try {
-			supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader(Constants.XML_LOADER)
-					.loadSupportedCurrencies();
+		supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader(Constants.XML_LOADER)
+				.loadSupportedCurrencies();
 
-			ConversionRateLoader rateLoader = ConversionRateLoaderFactory.getInstamce()
-					.getRatesLoader(Constants.XML_LOADER);
-			conversionRates = rateLoader.loadConversionRates();
+		ConversionRateLoader rateLoader = ConversionRateLoaderFactory.getInstamce()
+				.getRatesLoader(Constants.XML_LOADER);
+		conversionRates = rateLoader.loadConversionRates();
 
-			ConversionRuleLoader ruleLoader = ConversionRuleLoaderFactory.getInstamce()
-					.getRulesLoader(Constants.XML_LOADER);
-			conversionRules = ruleLoader.loadConversionRules();
-
-		} catch (Exception ex) {
-			logger.error("Application initialization failed" + ex);
-			throw new ApplicationInitializationException(ex.getMessage());
-		}
+		ConversionRuleLoader ruleLoader = ConversionRuleLoaderFactory.getInstamce()
+				.getRulesLoader(Constants.XML_LOADER);
+		conversionRules = ruleLoader.loadConversionRules();
 	}
 }
