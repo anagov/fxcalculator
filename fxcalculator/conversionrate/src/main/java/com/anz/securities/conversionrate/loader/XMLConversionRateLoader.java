@@ -1,12 +1,7 @@
 package com.anz.securities.conversionrate.loader;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +9,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import com.anz.securities.common.Constants;
 import com.anz.securities.common.exception.DataLoaderException;
+import com.anz.securities.common.util.CommonUtil;
 import com.anz.securities.conversionrate.api.ConversionRateLoader;
 import com.anz.securities.conversionrate.dto.ConversionRate;
 import com.anz.securities.conversionrate.dto.ConversionRates;
@@ -48,18 +43,10 @@ public class XMLConversionRateLoader implements ConversionRateLoader {
 	 * @return
 	 * @throws CurrencyLoaderException
 	 */
-	private List<ConversionRate> loadSupportedCurrencies(final String fileName) throws DataLoaderException {
+	private List<ConversionRate> loadSupportedCurrencies(final String resource) throws DataLoaderException {
 		try {
 			List<ConversionRate> rateList = new ArrayList<ConversionRate>();
-
-			InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
-			if (input == null) {
-				throw new DataLoaderException("NULL Input stream while loading currencies");
-			}
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(input);
-			doc.getDocumentElement().normalize();
+			Document doc = CommonUtil.getXMLDocument(resource);
 
 			NodeList nList = doc.getElementsByTagName(Constants.CONVERTION_RATE);
 			String srcCur, destCur, rate;
@@ -70,6 +57,7 @@ public class XMLConversionRateLoader implements ConversionRateLoader {
 				srcCur = eElement.getElementsByTagName(Constants.SOURCE_CURRENCY).item(0).getTextContent();
 				destCur = eElement.getElementsByTagName(Constants.DESTINATION_CURRENCY).item(0).getTextContent();
 				rate = eElement.getElementsByTagName(Constants.RATE).item(0).getTextContent();
+				
 				ConversionRate convRate = new ConversionRate();
 				convRate.setConversionRate(rate);
 				convRate.setDestinationCurrency(destCur);
@@ -77,13 +65,7 @@ public class XMLConversionRateLoader implements ConversionRateLoader {
 				rateList.add(convRate);
 			}
 			return rateList;
-		} catch (SAXException exParse) {
-			logger.error("Error parsing supported currencies XML" + exParse);
-			throw new DataLoaderException("XMLParse exception" + exParse.getMessage());
-		} catch (IOException exIO) {
-			logger.error("IO Exception loading supported currencies" + exIO);
-			throw new DataLoaderException("IO exception" + exIO.getMessage());
-		} catch (Exception ex) {
+		}  catch (Exception ex) {
 			logger.error("Generic Exception loading Currencies" + ex);
 			throw new DataLoaderException("Generic Exception  Loading Currencies" + ex.getMessage());
 		}

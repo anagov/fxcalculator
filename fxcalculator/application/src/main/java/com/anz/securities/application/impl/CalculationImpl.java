@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.anz.securities.application.api.AbstractCalculation;
+import com.anz.securities.common.Constants;
 import com.anz.securities.common.exception.CurrencyConversionException;
 import com.anz.securities.common.exception.RuleNotFoundException;
 import com.anz.securities.common.exception.ValidationException;
@@ -63,6 +64,11 @@ public class CalculationImpl extends AbstractCalculation {
 		do {
 
 			List<ConversionRule> ruleList = conversionRules.getRule(sourceCurrency);
+		
+			if ( null == ruleList || ruleList.isEmpty()) {
+				throw new RuleNotFoundException("Rule not found exception");
+			}
+			
 			int index = Collections.binarySearch(ruleList, new ConversionRule(userInput.getDestinationCurrency()));
 			
 			if ( index <= 0) {
@@ -105,11 +111,11 @@ public class CalculationImpl extends AbstractCalculation {
 		double convertedAmt = 0;
 		int expectedDecimal = cache.getSupportedCurrencies().getDecimalPlaceSupport(rate.getDestinationCurrency());
 
-		if (rate.getConversionType().equalsIgnoreCase("D")) {
+		if (rate.getConversionType().equalsIgnoreCase(Constants.CONV_DIRECT)) {
 
 			convertedAmt = userInput.getConvertedAmount() * Double.valueOf(rate.getConversionRate());
 
-		} else if (rate.getConversionType().equalsIgnoreCase("INV")) {
+		} else if (rate.getConversionType().equalsIgnoreCase(Constants.CONV_INVERT)) {
 			convertedAmt = userInput.getConvertedAmount() * (1 / Double.valueOf(rate.getConversionRate()));
 		}
 

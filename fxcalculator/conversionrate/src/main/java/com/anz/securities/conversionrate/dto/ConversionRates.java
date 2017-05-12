@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.anz.securities.common.Constants;
 import com.anz.securities.common.exception.UndefinedConversionRate;
 
 /**
@@ -12,8 +13,7 @@ import com.anz.securities.common.exception.UndefinedConversionRate;
  *
  */
 public class ConversionRates {
-	private static final String CONV_DIRECT = "D";
-	private static final String CONV_INVERT = "INV";
+
 
 	private List<ConversionRate> conversionRateList;
 
@@ -42,11 +42,11 @@ public class ConversionRates {
 	 */
 	public ConversionRate getConversionRate(final String src, final String dest) throws UndefinedConversionRate {
 		try {
-			String converstionType = CONV_DIRECT;
+			String converstionType = Constants.CONV_DIRECT;
 			Collections.sort(conversionRateList);
 			int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
 			if (index <= 0) {
-				converstionType = CONV_INVERT;
+				converstionType = Constants.CONV_INVERT;
 				index = Collections.binarySearch(conversionRateList, new ConversionRate(dest, src));
 			}
 

@@ -21,4 +21,6 @@ public class Constants {
 	public static final String SUPPORTED_DECIMAL = "supportedDecimal";
 	public static final String CURRENCY = "currency";
 	public static final LoaderType XML_LOADER = LoaderType.XML;
+	public static final String CONV_DIRECT = "D";
+	public static final String CONV_INVERT = "INV";
 }
