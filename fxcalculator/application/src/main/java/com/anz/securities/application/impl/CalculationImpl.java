@@ -71,7 +71,7 @@ public class CalculationImpl extends AbstractCalculation {
 			
 			int index = Collections.binarySearch(ruleList, new ConversionRule(userInput.getDestinationCurrency()));
 			
-			if ( index <= 0) {
+			if ( index < 0) {
 				throw new RuleNotFoundException("Rule not found exception");
 			}
 			
