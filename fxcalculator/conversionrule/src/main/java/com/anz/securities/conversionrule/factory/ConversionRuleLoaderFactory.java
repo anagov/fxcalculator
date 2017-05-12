@@ -5,10 +5,19 @@ import com.anz.securities.common.exception.LoaderNotSupportedException;
 import com.anz.securities.conversionrule.api.ConversionRuleLoader;
 import com.anz.securities.conversionrule.loader.XMLConversionRuleLoader;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class ConversionRuleLoaderFactory {
 	
 	private static ConversionRuleLoaderFactory factory;
 	 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ConversionRuleLoaderFactory getInstamce() {
 		if ( factory == null ) {
 			factory = new ConversionRuleLoaderFactory();
@@ -16,6 +25,12 @@ public class ConversionRuleLoaderFactory {
 		return factory;
 	}
 	
+	/**
+	 * 
+	 * @param source
+	 * @return
+	 * @throws LoaderNotSupportedException
+	 */
 	public ConversionRuleLoader getRulesLoader( LoaderType  source) throws LoaderNotSupportedException {
 		
 		if (source == LoaderType.XML ) {

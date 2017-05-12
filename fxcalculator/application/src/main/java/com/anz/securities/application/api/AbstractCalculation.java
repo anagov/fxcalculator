@@ -7,11 +7,18 @@ import com.anz.securities.common.exception.CurrencyNotSupportedException;
 import com.anz.securities.common.exception.UndefinedConversionRate;
 import com.anz.securities.common.exception.ValidationException;
 import com.anz.securities.currency.dto.UserInputDto;
-
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public abstract class AbstractCalculation implements Calculation {
 
 	protected ApplicationCache cache;
 
+	/**
+	 * 
+	 */
 	public void perform(UserInputDto userInput) throws CalculationException {
 		try {
 			initializaApplication();
@@ -23,14 +30,33 @@ public abstract class AbstractCalculation implements Calculation {
 		}
 	}
 
+	/**
+	 * 
+	 * @throws ApplicationInitializationException
+	 */
 	protected void initializaApplication() throws ApplicationInitializationException {
 		cache = ApplicationCache.getInstance();
 	}
 
+	/**
+	 * 
+	 * @param userInput
+	 * @throws ValidationException
+	 */
 	protected abstract void validateUserInput(UserInputDto userInput) throws ValidationException ;
 	
+	/**
+	 * 
+	 * @param userInput
+	 */
 	protected abstract void determinePath(UserInputDto userInput);
 
+	/**
+	 * 
+	 * @param userInput
+	 * @throws UndefinedConversionRate
+	 * @throws CurrencyNotSupportedException
+	 */
 	protected abstract void convertAmount(UserInputDto userInput)
 			throws UndefinedConversionRate, CurrencyNotSupportedException;
 

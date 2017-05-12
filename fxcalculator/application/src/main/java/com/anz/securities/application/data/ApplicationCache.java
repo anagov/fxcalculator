@@ -15,6 +15,11 @@ import com.anz.securities.currency.factory.CurrencyLoaderFactory;
 
 import conm.anz.securities.conversionrate.factory.ConversionRateLoaderFactory;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class ApplicationCache {
 	private static Logger logger = LoggerFactory.getLogger(ApplicationCache.class);
 
@@ -24,10 +29,19 @@ public class ApplicationCache {
 
 	private static ApplicationCache cache = null;
 
+	/**
+	 * 
+	 * @throws ApplicationInitializationException
+	 */
 	private ApplicationCache() throws ApplicationInitializationException {
 		loadApplicationCache();
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws ApplicationInitializationException
+	 */
 	public static ApplicationCache getInstance() throws ApplicationInitializationException {
 		if (cache == null) {
 			cache = new ApplicationCache();
@@ -35,19 +49,35 @@ public class ApplicationCache {
 		return cache;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public ConversionRates getConversionRates() {
 		return conversionRates;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public SupportedCurrencies getSupportedCurrencies() {
 		return supportedCurrencies;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public ConversionRules getConversionRules() {
 		return conversionRules;
 	}
 
-	public void loadApplicationCache() throws ApplicationInitializationException {
+	/**
+	 * 
+	 * @throws ApplicationInitializationException
+	 */
+	private void loadApplicationCache() throws ApplicationInitializationException {
 		try {
 			supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader().loadSupportedCurrencies();
 

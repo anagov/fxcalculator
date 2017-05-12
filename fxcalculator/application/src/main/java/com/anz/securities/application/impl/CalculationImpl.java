@@ -19,9 +19,17 @@ import com.anz.securities.conversionrule.dto.ConversionRules;
 import com.anz.securities.currency.dto.TraversalPath;
 import com.anz.securities.currency.dto.UserInputDto;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class CalculationImpl extends AbstractCalculation {
 	private static Logger logger = LoggerFactory.getLogger(CalculationImpl.class);
 
+	/**
+	 * 
+	 */
 	protected void validateUserInput(UserInputDto userInput) throws ValidationException {
 		try {
 			if (!cache.getSupportedCurrencies().isSupported(userInput.getSourceCurrency())) {
@@ -44,6 +52,9 @@ public class CalculationImpl extends AbstractCalculation {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void determinePath(UserInputDto userInput) {
 		ConversionRules conversionRules = cache.getConversionRules();
 		String sourceCurrency = userInput.getSourceCurrency();
@@ -56,17 +67,19 @@ public class CalculationImpl extends AbstractCalculation {
 			myrule = ruleList.get(index);
 
 			if (!myrule.getLinkedTo().equals("NA")) {
-				path = new TraversalPath(sourceCurrency, myrule.getLinkedTo(), myrule.getConversionType());
+				path = new TraversalPath(sourceCurrency, myrule.getLinkedTo());
 				sourceCurrency = myrule.getLinkedTo();
 			} else {
-				path = new TraversalPath(sourceCurrency, userInput.getDestinationCurrency(),
-						myrule.getConversionType());
+				path = new TraversalPath(sourceCurrency, userInput.getDestinationCurrency());
 			}
 
 			userInput.addTraversal(path);
 		} while (!myrule.getLinkedTo().equals("NA"));
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void convertAmount(UserInputDto userInput) throws UndefinedConversionRate, CurrencyNotSupportedException {
 		ConversionRates rates = cache.getConversionRates();

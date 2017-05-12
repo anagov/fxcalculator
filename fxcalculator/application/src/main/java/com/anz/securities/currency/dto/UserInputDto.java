@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class UserInputDto {
 	private String sourceCurrency;
 	private String destinationCurrency;

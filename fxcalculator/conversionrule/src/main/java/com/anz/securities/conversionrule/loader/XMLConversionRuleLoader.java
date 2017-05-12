@@ -22,10 +22,18 @@ import com.anz.securities.conversionrule.api.ConversionRuleLoader;
 import com.anz.securities.conversionrule.dto.ConversionRule;
 import com.anz.securities.conversionrule.dto.ConversionRules;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class XMLConversionRuleLoader implements ConversionRuleLoader {
 	private static final String RESOURCE_FILE_NAME = "ConversionRules.xml";
 	private static Logger logger = LoggerFactory.getLogger(XMLConversionRuleLoader.class);
 
+	/**
+	 * 
+	 */
 	public ConversionRules loadConversionRules() throws DataLoaderException {
 		ConversionRules convRules = new ConversionRules();
 		try {
@@ -52,18 +60,16 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 				Node nNode = nList.item(temp);
 				Element eElement = (Element) nNode;
 				String currencyId = eElement.getAttribute("id");
-				
+
 				NodeList childNodes = eElement.getElementsByTagName("destinationcurrency");
 				List<ConversionRule> listConversionRules = new ArrayList<ConversionRule>();
 				for (int temp1 = 0; temp1 < childNodes.getLength(); temp1++) {
 					Node nNode1 = childNodes.item(temp1);
 					Element eElement1 = (Element) nNode1;
 					String destCurrencyId = eElement1.getAttribute("id");
-					String linkedTo = eElement1.getElementsByTagName("linkedto").item(0).getTextContent();
-					String conversiontype = eElement1.getElementsByTagName("conversiontype").item(0).getTextContent();
+					String linkedTo = eElement1.getAttribute("linkedto");
 					ConversionRule converRule = new ConversionRule();
 
-					converRule.setConversionType(conversiontype);
 					converRule.setCurrency(destCurrencyId);
 					converRule.setLinkedTo(linkedTo);
 
@@ -77,5 +83,4 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 		}
 		return conversionMap;
 	}
-
 }

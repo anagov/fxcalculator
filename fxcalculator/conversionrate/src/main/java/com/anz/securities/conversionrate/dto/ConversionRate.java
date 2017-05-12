@@ -3,7 +3,12 @@ package com.anz.securities.conversionrate.dto;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class ConversionRate implements Comparable<ConversionRate>, Comparator<ConversionRate> {
+/**
+ * 
+ * @author xanakat
+ *
+ */
+public class ConversionRate implements Comparable<ConversionRate> {
 
 	private String sourceCurrency;
 	private String destinationCurrency;
@@ -50,13 +55,9 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 		this.conversionType = conversionType;
 	}
 
-	public int compare(ConversionRate o1, ConversionRate o2) {
-		int temp = o1.getSourceCurrency().compareToIgnoreCase(o2.getSourceCurrency());
-		if (temp != 0)
-			return temp;
-		return o1.getDestinationCurrency().compareToIgnoreCase(o2.getDestinationCurrency());
-	}
-
+	/**
+	 * 
+	 */
 	public int compareTo(ConversionRate o) {
 		int temp = this.sourceCurrency.compareToIgnoreCase(o.getSourceCurrency());
 		if (temp != 0)
@@ -64,6 +65,9 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 		return this.destinationCurrency.compareToIgnoreCase(o.getDestinationCurrency());
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,11 +85,17 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 				&& this.destinationCurrency.equalsIgnoreCase(temp.getDestinationCurrency());
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.sourceCurrency, this.destinationCurrency);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -97,7 +107,7 @@ public class ConversionRate implements Comparable<ConversionRate>, Comparator<Co
 		builder.append(getConversionRate());
 		builder.append(" == Converstion Type - ");
 		builder.append(getConversionType());
-		
+
 		return builder.toString();
 	}
 }

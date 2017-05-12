@@ -1,54 +1,70 @@
 package com.anz.securities.conversionrule.dto;
 
-import java.util.Comparator;
 import java.util.Objects;
 
-public class ConversionRule implements Comparable<ConversionRule>, Comparator<ConversionRule> {
+/**
+ * 
+ * @author xanakat
+ *
+ */
+public class ConversionRule implements Comparable<ConversionRule> {
 	private String currency;
 	private String linkedTo;
-	private String conversionType;
 
 	public ConversionRule() {
 
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 */
 	public ConversionRule(String currency) {
 		this.currency = currency;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCurrency() {
 		return currency;
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 */
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLinkedTo() {
 		return linkedTo;
 	}
 
+	/**
+	 * 
+	 * @param linkedTo
+	 */
 	public void setLinkedTo(String linkedTo) {
 		this.linkedTo = linkedTo;
 	}
 
-	public String getConversionType() {
-		return conversionType;
-	}
-
-	public void setConversionType(String conversionType) {
-		this.conversionType = conversionType;
-	}
-
+	/**
+	 * 
+	 */
 	public int compareTo(ConversionRule o) {
 		return this.currency.compareTo(o.getCurrency());
 	}
 
-	public int compare(ConversionRule o1, ConversionRule o2) {
-
-		return o1.getCurrency().compareToIgnoreCase(o2.getCurrency());
-	}
-
+	/**
+	 * 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -65,11 +81,17 @@ public class ConversionRule implements Comparable<ConversionRule>, Comparator<Co
 		return Objects.equals(currency, temp.getCurrency());
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(currency);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder strBuilder = new StringBuilder();
@@ -77,8 +99,6 @@ public class ConversionRule implements Comparable<ConversionRule>, Comparator<Co
 		strBuilder.append(getCurrency());
 		strBuilder.append("- Linked To- ");
 		strBuilder.append(getLinkedTo());
-		strBuilder.append("- Conversion Type- ");
-		strBuilder.append(getConversionType());
 		return strBuilder.toString();
 	}
 }

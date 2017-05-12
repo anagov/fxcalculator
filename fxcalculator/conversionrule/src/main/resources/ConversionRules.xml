@@ -1,465 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <conversions>
 	<sourcecurrency id="AUD">
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="USD"/>
+		<destinationcurrency id="EUR" linkedto="USD"/>
+		<destinationcurrency id="GBP" linkedto="USD"/> >
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="USD"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
 	<sourcecurrency id="CAD">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="USD"/>
+		<destinationcurrency id="EUR" linkedto="USD"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="USD"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
-	<sourcecurrency id="CNY">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
+	<sourcecurrency id="CNY" >
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="USD"/>
+		<destinationcurrency id="EUR" linkedto="USD"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="USD"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
 	<sourcecurrency id="CZK">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="EUR"/>
+		<destinationcurrency id="EUR" linkedto="NA"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="EUR"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="EUR"/>
 	</sourcecurrency>
 	<sourcecurrency id="DKK">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="EUR"/>
+		<destinationcurrency id="EUR" linkedto="NA"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="EUR"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="EUR"/>
 	</sourcecurrency>
 	<sourcecurrency id="EUR">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="NA"/>
+		<destinationcurrency id="DKK" linkedto="NA"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="NA"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
 	<sourcecurrency id="GBP">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="USD"/>
+		<destinationcurrency id="EUR" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="USD"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
 	<sourcecurrency id="JPY">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="USD"/>
+		<destinationcurrency id="EUR" linkedto="USD"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="USD"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
 	<sourcecurrency id="NOK">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="EUR"/>
+		<destinationcurrency id="DKK" linkedto="EUR"/>
+		<destinationcurrency id="EUR" linkedto="NA"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NZD" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="EUR"/>
 	</sourcecurrency>
 	<sourcecurrency id="NZD">
-		<destinationcurrency id="AUD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>USD</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="USD">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="USD"/>
+		<destinationcurrency id="CAD" linkedto="USD"/>
+		<destinationcurrency id="CNY" linkedto="USD"/>
+		<destinationcurrency id="CZK" linkedto="USD"/>
+		<destinationcurrency id="DKK" linkedto="USD"/>
+		<destinationcurrency id="EUR" linkedto="USD"/>
+		<destinationcurrency id="GBP" linkedto="USD"/>
+		<destinationcurrency id="JPY" linkedto="USD"/>
+		<destinationcurrency id="NOK" linkedto="USD"/>
+		<destinationcurrency id="USD" linkedto="NA"/>
 	</sourcecurrency>
 	<sourcecurrency id="USD">
-		<destinationcurrency id="AUD">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CAD">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CNY">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="CZK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="DKK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="EUR">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="GBP">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="JPY">
-			<linkedto>NA</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NZD">
-			<linkedto>NA</linkedto>
-			<conversiontype>INV</conversiontype>
-		</destinationcurrency>	
-		<destinationcurrency id="NOK">
-			<linkedto>EUR</linkedto>
-			<conversiontype>D</conversiontype>
-		</destinationcurrency>	
+		<destinationcurrency id="AUD" linkedto="NA"/>
+		<destinationcurrency id="CAD" linkedto="NA"/>
+		<destinationcurrency id="CNY" linkedto="NA"/>
+		<destinationcurrency id="CZK" linkedto="EUR"/>
+		<destinationcurrency id="DKK" linkedto="EUR"/>
+		<destinationcurrency id="EUR" linkedto="NA"/>
+		<destinationcurrency id="GBP" linkedto="NA"/>
+		<destinationcurrency id="JPY" linkedto="NA"/>
+		<destinationcurrency id="NZD" linkedto="NA"/>
+		<destinationcurrency id="NOK" linkedto="EUR"/>
 	</sourcecurrency>
 </conversions>

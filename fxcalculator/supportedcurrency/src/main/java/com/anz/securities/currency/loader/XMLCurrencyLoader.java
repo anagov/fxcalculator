@@ -18,11 +18,19 @@ import com.anz.securities.common.exception.CurrencyLoaderException;
 import com.anz.securities.currency.api.CurrencyLoader;
 import com.anz.securities.currency.dto.SupportedCurrencies;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class XMLCurrencyLoader implements CurrencyLoader {
 	private static final String RESOURCE_FILE_NAME = "SupportedCurrencies.xml";
 	private static Logger logger = LoggerFactory.getLogger(XMLCurrencyLoader.class);
 	private Map<String, String> supportedCurrencies;
 
+	/**
+	 * 
+	 */
 	public SupportedCurrencies loadSupportedCurrencies() throws CurrencyLoaderException {
 		SupportedCurrencies supCurrencies = null;
 		try {

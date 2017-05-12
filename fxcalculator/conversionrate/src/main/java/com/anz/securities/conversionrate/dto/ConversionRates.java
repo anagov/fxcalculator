@@ -6,6 +6,11 @@ import java.util.List;
 
 import com.anz.securities.common.exception.UndefinedConversionRate;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class ConversionRates {
 
 	private List<ConversionRate> conversionRateList;
@@ -26,6 +31,13 @@ public class ConversionRates {
 		conversionRateList.add(rate);
 	}
 	
+	/**
+	 * 
+	 * @param src
+	 * @param dest
+	 * @return
+	 * @throws UndefinedConversionRate
+	 */
 	public ConversionRate getConversionRate( String src, String dest ) throws UndefinedConversionRate {
 		String converstionType = "D";
 		Collections.sort(conversionRateList);

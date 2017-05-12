@@ -4,6 +4,11 @@ import java.util.Map;
 
 import com.anz.securities.common.exception.CurrencyNotSupportedException;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class SupportedCurrencies {
 	private Map<String, String> supCurrency;
 
@@ -11,10 +16,21 @@ public class SupportedCurrencies {
 		supCurrency = supCur;
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 * @return
+	 */
 	public boolean isSupported(String currency) {
 		return supCurrency.keySet().contains(currency);
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 * @return
+	 * @throws CurrencyNotSupportedException
+	 */
 	public int getDecimalPlaceSupport(String currency) throws CurrencyNotSupportedException {
 
 		if (!supCurrency.keySet().contains(currency)) {

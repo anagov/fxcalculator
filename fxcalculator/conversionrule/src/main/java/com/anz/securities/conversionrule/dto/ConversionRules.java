@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class ConversionRules {
 
 	private Map<String, List<ConversionRule>> rules;
@@ -13,14 +18,27 @@ public class ConversionRules {
 		rules = new HashMap<String, List<ConversionRule>>();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Map<String, List<ConversionRule>> getRules() {
 		return rules;
 	}
 
+	/**
+	 * 
+	 * @param rules
+	 */
 	public void setRules(Map<String, List<ConversionRule>> rules) {
 		this.rules = rules;
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 * @param rule
+	 */
 	public void addRule(String currency, List<ConversionRule> rule) {
 		rules.put(currency, rule);
 	}
@@ -29,6 +47,9 @@ public class ConversionRules {
 		return rules.get(key);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder strBuilder = new StringBuilder();

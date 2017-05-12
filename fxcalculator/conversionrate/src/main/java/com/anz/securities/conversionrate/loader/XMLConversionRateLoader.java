@@ -20,10 +20,18 @@ import com.anz.securities.conversionrate.api.ConversionRateLoader;
 import com.anz.securities.conversionrate.dto.ConversionRate;
 import com.anz.securities.conversionrate.dto.ConversionRates;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class XMLConversionRateLoader implements ConversionRateLoader {
 	private static Logger logger = LoggerFactory.getLogger(XMLConversionRateLoader.class);
 	private static final String RESOURCE_FILE_NAME = "ConversionRate.xml";
 
+	/**
+	 * 
+	 */
 	public ConversionRates loadConversionRates() throws DataLoaderException {
 		ConversionRates convRates = new ConversionRates();
 		try {
@@ -37,6 +45,12 @@ public class XMLConversionRateLoader implements ConversionRateLoader {
 		return convRates;
 	}
 
+	/**
+	 * 
+	 * @param fileName
+	 * @return
+	 * @throws CurrencyLoaderException
+	 */
 	private List<ConversionRate> loadSupportedCurrencies(String fileName) throws CurrencyLoaderException {
 		List<ConversionRate> rateList = new ArrayList<ConversionRate>();
 		try {
