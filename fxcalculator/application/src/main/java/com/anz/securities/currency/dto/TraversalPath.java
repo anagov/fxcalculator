@@ -1,5 +1,10 @@
 package com.anz.securities.currency.dto;
 
+/**
+ * 
+ * @author xanakat
+ *
+ */
 public class TraversalPath {
 	private String fromCurrency;
 	private String toCurrency;
