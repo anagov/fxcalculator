@@ -3,6 +3,7 @@ package supportedcurrency;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.anz.securities.common.Constants;
 import com.anz.securities.currency.dto.SupportedCurrencies;
 import com.anz.securities.currency.factory.CurrencyLoaderFactory;
 
@@ -15,7 +16,7 @@ public class App {
 	public static void main(String[] args) {
 		try {
 
-			SupportedCurrencies supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader()
+			SupportedCurrencies supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader(Constants.XML_LOADER)
 					.loadSupportedCurrencies();
 			logger.info("Currencies loaded are" + supportedCurrencies.toString());
 

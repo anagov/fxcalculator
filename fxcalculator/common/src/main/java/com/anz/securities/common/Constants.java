@@ -1,5 +1,7 @@
 package com.anz.securities.common;
 
+import com.anz.securities.common.dto.LoaderType;
+
 /**
  * 
  * @author xanakat
@@ -18,4 +20,5 @@ public class Constants {
 	public static final String LINKED_TO = "linkedto";
 	public static final String SUPPORTED_DECIMAL = "supportedDecimal";
 	public static final String CURRENCY = "currency";
+	public static final LoaderType XML_LOADER = LoaderType.XML;
 }

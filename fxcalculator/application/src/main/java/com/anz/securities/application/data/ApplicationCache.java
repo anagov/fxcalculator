@@ -3,6 +3,7 @@ package com.anz.securities.application.data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.anz.securities.common.Constants;
 import com.anz.securities.common.dto.LoaderType;
 import com.anz.securities.common.exception.ApplicationInitializationException;
 import com.anz.securities.conversionrate.api.ConversionRateLoader;
@@ -79,13 +80,15 @@ public class ApplicationCache {
 	 */
 	private void loadApplicationCache() throws ApplicationInitializationException {
 		try {
-			supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader().loadSupportedCurrencies();
+			supportedCurrencies = CurrencyLoaderFactory.getInstance().getCurrencyLoader(Constants.XML_LOADER)
+					.loadSupportedCurrencies();
 
-			LoaderType source = LoaderType.XML;
-			ConversionRateLoader rateLoader = ConversionRateLoaderFactory.getInstamce().getRatesLoader(source);
+			ConversionRateLoader rateLoader = ConversionRateLoaderFactory.getInstamce()
+					.getRatesLoader(Constants.XML_LOADER);
 			conversionRates = rateLoader.loadConversionRates();
 
-			ConversionRuleLoader ruleLoader = ConversionRuleLoaderFactory.getInstamce().getRulesLoader(source);
+			ConversionRuleLoader ruleLoader = ConversionRuleLoaderFactory.getInstamce()
+					.getRulesLoader(Constants.XML_LOADER);
 			conversionRules = ruleLoader.loadConversionRules();
 
 		} catch (Exception ex) {

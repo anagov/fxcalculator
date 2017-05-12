@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.anz.securities.application.api.AbstractCalculation;
-import com.anz.securities.common.exception.CurrencyNotSupportedException;
-import com.anz.securities.common.exception.UndefinedConversionRate;
+import com.anz.securities.common.exception.CurrencyConversionException;
+import com.anz.securities.common.exception.RuleNotFoundException;
 import com.anz.securities.common.exception.ValidationException;
 import com.anz.securities.conversionrate.dto.ConversionRate;
 import com.anz.securities.conversionrate.dto.ConversionRates;
@@ -55,7 +55,7 @@ public class CalculationImpl extends AbstractCalculation {
 	/**
 	 * 
 	 */
-	protected void determinePath(final UserInputDto userInput) {
+	protected void determinePath(final UserInputDto userInput) throws RuleNotFoundException {
 		ConversionRules conversionRules = cache.getConversionRules();
 		String sourceCurrency = userInput.getSourceCurrency();
 		ConversionRule myrule;
@@ -64,6 +64,11 @@ public class CalculationImpl extends AbstractCalculation {
 
 			List<ConversionRule> ruleList = conversionRules.getRule(sourceCurrency);
 			int index = Collections.binarySearch(ruleList, new ConversionRule(userInput.getDestinationCurrency()));
+			
+			if ( index <= 0) {
+				throw new RuleNotFoundException("Rule not found exception");
+			}
+			
 			myrule = ruleList.get(index);
 
 			if (!myrule.getLinkedTo().equals("NA")) {
@@ -81,7 +86,7 @@ public class CalculationImpl extends AbstractCalculation {
 	 * 
 	 */
 	@Override
-	protected void convertAmount(final UserInputDto userInput) throws UndefinedConversionRate, CurrencyNotSupportedException {
+	protected void convertAmount(final UserInputDto userInput) throws CurrencyConversionException {
 		ConversionRates rates = cache.getConversionRates();
 		ConversionRate rate;
 
@@ -91,7 +96,7 @@ public class CalculationImpl extends AbstractCalculation {
 		}
 	}
 
-	private void applyCalculation(final UserInputDto userInput, final ConversionRate rate) throws CurrencyNotSupportedException {
+	private void applyCalculation(final UserInputDto userInput, final ConversionRate rate) throws CurrencyConversionException {
 
 		logger.info("Conversion amount " + userInput.getConvertedAmount());
 		logger.info("Conversion Rate " + rate.getConversionRate());

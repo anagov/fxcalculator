@@ -1,5 +1,6 @@
 package com.anz.securities.currency.loader;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +14,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.anz.securities.common.Constants;
-import com.anz.securities.common.exception.CurrencyLoaderException;
+import com.anz.securities.common.exception.DataLoaderException;
 import com.anz.securities.currency.api.CurrencyLoader;
 import com.anz.securities.currency.dto.SupportedCurrencies;
 
@@ -27,29 +29,27 @@ import com.anz.securities.currency.dto.SupportedCurrencies;
 public class XMLCurrencyLoader implements CurrencyLoader {
 
 	private static Logger logger = LoggerFactory.getLogger(XMLCurrencyLoader.class);
-	private Map<String, String> supportedCurrencies;
 
 	/**
 	 * 
 	 */
-	public SupportedCurrencies loadSupportedCurrencies() throws CurrencyLoaderException {
+	public SupportedCurrencies loadSupportedCurrencies() throws DataLoaderException {
 		SupportedCurrencies supCurrencies = null;
-		try {
-			loadSupportedCurrencies(Constants.SUPPORTED_CURRENCIES_RESOURCE_FILE);
-			supCurrencies = new SupportedCurrencies(supportedCurrencies);
-		} catch (Exception ex) {
-			logger.error("Error loading Currencies" + ex);
-			throw new CurrencyLoaderException("Error While Loading currencies");
-		}
+
+		Map<String, String> supportedCurrencies = loadSupportedCurrencies(Constants.SUPPORTED_CURRENCIES_RESOURCE_FILE);
+		supCurrencies = new SupportedCurrencies(supportedCurrencies);
 		return supCurrencies;
 	}
 
-	private void loadSupportedCurrencies(final String fileName) throws CurrencyLoaderException {
+	private Map<String, String> loadSupportedCurrencies(final String fileName) throws DataLoaderException {
 		try {
-
+			Map<String, String> supportedCurrencies;
 			InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			if (input == null) {
+				throw new DataLoaderException("NULL Input stream while loading currencies");
+			}
 			Document doc = dBuilder.parse(input);
 
 			doc.getDocumentElement().normalize();
@@ -69,9 +69,16 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 					supportedCurrencies.put(currencyId, decimalDisplay);
 				}
 			}
+			return supportedCurrencies;
+		} catch (SAXException exParse) {
+			logger.error("Error parsing supported currencies XML" + exParse);
+			throw new DataLoaderException("XMLParse exception" + exParse.getMessage());
+		} catch (IOException exIO) {
+			logger.error("IO Exception loading supported currencies" + exIO);
+			throw new DataLoaderException("IO exception" + exIO.getMessage());
 		} catch (Exception ex) {
-			logger.error("Error loading Currencies" + ex);
-			throw new CurrencyLoaderException("Error Loading Currencies");
+			logger.error("Generic Exception loading Currencies" + ex);
+			throw new DataLoaderException("Generic Exception  Loading Currencies" + ex.getMessage());
 		}
 	}
 

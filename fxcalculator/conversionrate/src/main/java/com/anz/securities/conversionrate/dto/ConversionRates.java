@@ -32,7 +32,7 @@ public class ConversionRates {
 	public void addConversionRate(ConversionRate rate) {
 		conversionRateList.add(rate);
 	}
-	
+
 	/**
 	 * 
 	 * @param src
@@ -40,20 +40,21 @@ public class ConversionRates {
 	 * @return
 	 * @throws UndefinedConversionRate
 	 */
-	public ConversionRate getConversionRate(final String src, final String dest ) throws UndefinedConversionRate {
-		String converstionType = CONV_DIRECT;
-		Collections.sort(conversionRateList);
-		int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
-		if ( index <=0 ) {
-			converstionType = CONV_INVERT;
-			index = Collections.binarySearch(conversionRateList, new ConversionRate(dest, src));
-		}
+	public ConversionRate getConversionRate(final String src, final String dest) throws UndefinedConversionRate {
 		try {
+			String converstionType = CONV_DIRECT;
+			Collections.sort(conversionRateList);
+			int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
+			if (index <= 0) {
+				converstionType = CONV_INVERT;
+				index = Collections.binarySearch(conversionRateList, new ConversionRate(dest, src));
+			}
+
 			ConversionRate rate = conversionRateList.get(index);
 			rate.setConversionType(converstionType);
 			return rate;
-		} catch ( Exception ex ) {
-			throw new UndefinedConversionRate("Rate not defined for");
+		} catch (Exception ex) {
+			throw new UndefinedConversionRate("Rate not defined for" + ex.getMessage());
 		}
 	}
 }

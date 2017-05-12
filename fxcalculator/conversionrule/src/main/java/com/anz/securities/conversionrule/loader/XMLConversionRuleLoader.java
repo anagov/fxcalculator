@@ -1,5 +1,6 @@
 package com.anz.securities.conversionrule.loader;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,9 +16,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.anz.securities.common.Constants;
-import com.anz.securities.common.exception.CurrencyLoaderException;
 import com.anz.securities.common.exception.DataLoaderException;
 import com.anz.securities.conversionrule.api.ConversionRuleLoader;
 import com.anz.securities.conversionrule.dto.ConversionRule;
@@ -32,28 +33,25 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 
 	private static Logger logger = LoggerFactory.getLogger(XMLConversionRuleLoader.class);
 
-
 	/**
 	 * 
 	 */
 	public ConversionRules loadConversionRules() throws DataLoaderException {
 		ConversionRules convRules = new ConversionRules();
-		try {
-			Map<String, List<ConversionRule>> convMap = loadSupportedCurrencies(
-					Constants.CONVERSION_RULE_RESOURCE_FILE);
-			convRules.setRules(convMap);
-		} catch (Exception ex) {
-			logger.error("Error loading Currencies" + ex);
-			throw new DataLoaderException("Error While Loading currencies");
-		}
+		Map<String, List<ConversionRule>> convMap = loadSupportedCurrencies(Constants.CONVERSION_RULE_RESOURCE_FILE);
+		convRules.setRules(convMap);
 		return convRules;
 	}
 
-	private Map<String, List<ConversionRule>> loadSupportedCurrencies( final String fileName) throws CurrencyLoaderException {
-		Map<String, List<ConversionRule>> conversionMap = new HashMap<String, List<ConversionRule>>();
+	private Map<String, List<ConversionRule>> loadSupportedCurrencies(final String fileName)
+			throws DataLoaderException {
 		try {
-			InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
+			Map<String, List<ConversionRule>> conversionMap = new HashMap<String, List<ConversionRule>>();
 
+			InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
+			if (input == null) {
+				throw new DataLoaderException("NULL Input stream while loading currencies");
+			}
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(input);
@@ -80,10 +78,17 @@ public class XMLConversionRuleLoader implements ConversionRuleLoader {
 				}
 				conversionMap.put(currencyId, listConversionRules);
 			}
+			return conversionMap;
+
+		} catch (SAXException exParse) {
+			logger.error("Error parsing supported currencies XML" + exParse);
+			throw new DataLoaderException("XMLParse exception" + exParse.getMessage());
+		} catch (IOException exIO) {
+			logger.error("IO Exception loading supported currencies" + exIO);
+			throw new DataLoaderException("IO exception" + exIO.getMessage());
 		} catch (Exception ex) {
-			logger.error("Error loading Currencies" + ex);
-			throw new CurrencyLoaderException("Error Loading Currencies");
+			logger.error("Generic Exception loading Currencies" + ex);
+			throw new DataLoaderException("Generic Exception  Loading Currencies" + ex.getMessage());
 		}
-		return conversionMap;
 	}
 }
