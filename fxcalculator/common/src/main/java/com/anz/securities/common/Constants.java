@@ -23,4 +23,5 @@ public class Constants {
 	public static final LoaderType XML_LOADER = LoaderType.XML;
 	public static final String CONV_DIRECT = "D";
 	public static final String CONV_INVERT = "INV";
+	public static final String END_RULE = "NA";
 }

@@ -77,7 +77,7 @@ public class CalculationImpl extends AbstractCalculation {
 			
 			myrule = ruleList.get(index);
 
-			if (!myrule.getLinkedTo().equals("NA")) {
+			if (!myrule.getLinkedTo().equals(Constants.END_RULE)) {
 				path = new TraversalPath(sourceCurrency, myrule.getLinkedTo());
 				sourceCurrency = myrule.getLinkedTo();
 			} else {
@@ -85,7 +85,7 @@ public class CalculationImpl extends AbstractCalculation {
 			}
 
 			userInput.addTraversal(path);
-		} while (!myrule.getLinkedTo().equals("NA"));
+		} while (!myrule.getLinkedTo().equals(Constants.END_RULE));
 	}
 
 	/**
