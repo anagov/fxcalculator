@@ -1,6 +1,5 @@
 package com.anz.securities.conversionrate.dto;
 
-import java.util.Comparator;
 import java.util.Objects;
 
 /**

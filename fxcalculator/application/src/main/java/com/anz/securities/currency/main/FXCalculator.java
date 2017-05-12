@@ -1,5 +1,7 @@
 package com.anz.securities.currency.main;
 
+import java.util.Scanner;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,11 +14,23 @@ public class FXCalculator {
 
 	public static void main(String[] args) {
 		try {
+			
 
-			String sourceCurrency = "CNY";
-			String destCurrency = "JPY";
+			
+			String sourceCurrency = "AUD";
+			String destCurrency = "USD";
 			String amount = "120";
 			
+/*			Scanner scanner = new Scanner(System.in);
+	        System.out.println("Enter Source Currency:" );  
+	        sourceCurrency = scanner.next();
+	        
+	        System.out.println("Enter Destination Currency:" );  
+	        destCurrency = scanner.next();
+
+	        System.out.println("Enter Amount to be converted:" );  
+	        amount = scanner.next();
+*/
 			UserInputDto userDto = new UserInputDto();
 			
 			userDto.setConversionAmount(amount); 

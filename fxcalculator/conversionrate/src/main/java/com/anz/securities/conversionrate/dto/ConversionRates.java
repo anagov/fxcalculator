@@ -45,7 +45,7 @@ public class ConversionRates {
 			String converstionType = Constants.CONV_DIRECT;
 			Collections.sort(conversionRateList);
 			int index = Collections.binarySearch(conversionRateList, new ConversionRate(src, dest));
-			if (index <= 0) {
+			if (index < 0) {
 				converstionType = Constants.CONV_INVERT;
 				index = Collections.binarySearch(conversionRateList, new ConversionRate(dest, src));
 			}
