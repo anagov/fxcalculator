@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 
- * @author xanakat
+ * @author Anand Katti
  *
  */
 public class UserInputDto {
@@ -16,6 +16,22 @@ public class UserInputDto {
 	private String conversionAmount;
 	private double convertedAmount;
 	private int expectedDecimal;
+	private Map<String, Double> conversionSteps = new HashMap<>();
+	private List<TraversalPath> traversal = new ArrayList<>();
+	private List<String> traversedPath = new ArrayList<>();
+	
+	public List<String> getTraversedPath() {
+		return traversedPath;
+	}
+	public void setTraversedPath(List<String> traversedPath) {
+		this.traversedPath = traversedPath;
+	}
+
+	public void addTraversedPath(final String traversedPath) {
+		this.traversedPath.add(traversedPath);
+	}
+
+	
 	public int getExpectedDecimal() {
 		return expectedDecimal;
 	}
@@ -23,9 +39,7 @@ public class UserInputDto {
 		this.expectedDecimal = expectedDecimal;
 	}
 
-	private Map<String, Double> conversionSteps = new HashMap<String, Double>();
-	
-	private List<TraversalPath> traversal = new ArrayList<TraversalPath>();
+
 	
 	public List<TraversalPath> getTraversal() {
 		return traversal;

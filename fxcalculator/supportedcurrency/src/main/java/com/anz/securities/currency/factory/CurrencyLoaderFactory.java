@@ -7,32 +7,37 @@ import com.anz.securities.currency.api.CurrencyLoader;
 import com.anz.securities.currency.loader.XMLCurrencyLoader;
 
 /**
+ * Factory to create supported currency loader instance
  * 
- * @author xanakat
+ * @author Anand Katti
  *
  */
 public class CurrencyLoaderFactory {
-	
+
 	private static final CurrencyLoaderFactory factory = new CurrencyLoaderFactory();
 
 	private CurrencyLoaderFactory() {
-		
 	}
+
 	/**
+	 * Returns the instance of the factory
 	 * 
-	 * @return
+	 * @return factory
 	 */
 	public static synchronized CurrencyLoaderFactory getInstance() {
 		return factory;
 	}
-	
+
 	/**
+	 * Returns the loader based on the loader type
 	 * 
-	 * @return
+	 * @param source
+	 * @return CurrencyLoader
+	 * @throws LoaderNotSupportedException
 	 */
-	public CurrencyLoader getCurrencyLoader(final LoaderType  source) throws LoaderNotSupportedException {
-		
-		if (source == Constants.XML_LOADER ) {
+	public CurrencyLoader getCurrencyLoader(final LoaderType source) throws LoaderNotSupportedException {
+
+		if (source == Constants.XML_LOADER) {
 			return new XMLCurrencyLoader();
 		} else {
 			throw new LoaderNotSupportedException("Loader not supported");

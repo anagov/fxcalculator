@@ -13,8 +13,9 @@ import com.anz.securities.currency.factory.CurrencyLoaderFactory;
 import conm.anz.securities.conversionrate.factory.ConversionRateLoaderFactory;
 
 /**
+ * Stores application data
  * 
- * @author xanakat
+ * @author Anand Katti
  *
  */
 public class ApplicationCache {
@@ -26,6 +27,7 @@ public class ApplicationCache {
 	private static ApplicationCache cache = null;
 
 	/**
+	 * Prohibits external instantiation and loads the application data
 	 * 
 	 * @throws ApplicationInitializationException
 	 */
@@ -34,8 +36,9 @@ public class ApplicationCache {
 	}
 
 	/**
+	 * Returns the singleton instance of the class.
 	 * 
-	 * @return
+	 * @return cache
 	 * @throws ApplicationInitializationException
 	 */
 	public static ApplicationCache getInstance() throws ApplicationInitializationException {
@@ -46,30 +49,34 @@ public class ApplicationCache {
 	}
 
 	/**
+	 * Utility method to provide conversion rates
 	 * 
-	 * @return
+	 * @return conversionRates
 	 */
 	public ConversionRates getConversionRates() {
 		return conversionRates;
 	}
 
 	/**
+	 * Utility method to provide supported currencies
 	 * 
-	 * @return
+	 * @return supportedCurrencies
 	 */
 	public SupportedCurrencies getSupportedCurrencies() {
 		return supportedCurrencies;
 	}
 
 	/**
+	 * Utility method to provide conversion rules.
 	 * 
-	 * @return
+	 * @return conversionRules
 	 */
 	public ConversionRules getConversionRules() {
 		return conversionRules;
 	}
 
 	/**
+	 * Loads the application data
 	 * 
 	 * @throws ApplicationInitializationException
 	 */

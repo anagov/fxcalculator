@@ -5,8 +5,9 @@ import java.util.Map;
 import com.anz.securities.common.exception.CurrencyNotSupportedException;
 
 /**
+ * Type to represent list of currencies and their expected decimal value
  * 
- * @author xanakat
+ * @author Anand Katti
  *
  */
 public class SupportedCurrencies {
@@ -17,18 +18,20 @@ public class SupportedCurrencies {
 	}
 
 	/**
+	 * returns true if the currency is supported
 	 * 
 	 * @param currency
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isSupported(final String currency) {
 		return supCurrency.keySet().contains(currency);
 	}
 
 	/**
+	 * returns the decimal support for the currency
 	 * 
 	 * @param currency
-	 * @return
+	 * @return decimalSupport
 	 * @throws CurrencyNotSupportedException
 	 */
 	public int getDecimalPlaceSupport(final String currency) throws CurrencyNotSupportedException {
@@ -55,4 +58,3 @@ public class SupportedCurrencies {
 
 	}
 }
-

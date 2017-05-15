@@ -4,7 +4,7 @@ import com.anz.securities.common.exception.FxCalculatorException;
 import com.anz.securities.currency.dto.UserInputDto;
 
 /**
- * 
+ * Type to provide conversion from source currency to destination currency
  * @author xanakat
  *
  */
@@ -12,7 +12,7 @@ import com.anz.securities.currency.dto.UserInputDto;
 public interface Calculation {
 
 	/**
-	 * 
+	 * Performs the conversion from source currency to destination currency
 	 * @param userInput
 	 * @throws CalculationException
 	 */

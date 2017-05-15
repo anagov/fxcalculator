@@ -1,44 +1,41 @@
-package com.anz.securities.application.impl;
+package com.anz.securities.converter.impl;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.anz.securities.application.api.AbstractCalculation;
 import com.anz.securities.common.Constants;
 import com.anz.securities.common.exception.CurrencyConversionException;
 import com.anz.securities.common.exception.RuleNotFoundException;
 import com.anz.securities.common.exception.ValidationException;
-import com.anz.securities.conversionrate.dto.ConversionRate;
-import com.anz.securities.conversionrate.dto.ConversionRates;
-import com.anz.securities.conversionrule.dto.ConversionRule;
-import com.anz.securities.conversionrule.dto.ConversionRules;
-import com.anz.securities.currency.dto.TraversalPath;
-import com.anz.securities.currency.dto.UserInputDto;
+import com.anz.securities.converter.dto.TraversalPath;
+import com.anz.securities.converter.dto.UserInputDto;
+import com.anz.securities.entities.apii.ConversionRate;
+import com.anz.securities.entities.apii.ConversionRule;
+import com.anz.securities.entities.apii.Currency;
+import com.anz.securities.entities.dto.CurrencyConverter;
+import com.anz.securities.entities.impl.ConversionRuleImpl;
 
-/**
- * Type to provide implementation to the AbstractCalculation type.
- * 
- * @author Anand Katti
- *
- */
-public class CalculationImpl extends AbstractCalculation {
-	private static Logger logger = LoggerFactory.getLogger(CalculationImpl.class);
+public class ConverterImpl extends AbstractConverter {
+	private static Logger logger = LoggerFactory.getLogger(ConverterImpl.class);
 
-	/**
-	 * @see AbstractCalculation.validateUserInput
-	 */
-	protected void validateUserInput(final UserInputDto userInput) throws ValidationException {
+	public ConverterImpl(CurrencyConverter converter) {
+		super(converter);
+	}
+
+	@Override
+	protected void validateUserInput(UserInputDto userInput) throws ValidationException {
 		try {
-			if (!cache.getSupportedCurrencies().isSupported(userInput.getSourceCurrency())) {
+			if (!converter.isCurrencySupported(userInput.getSourceCurrency())) {
 				throw new ValidationException("Currency not supported - " + userInput.getSourceCurrency());
 			}
 
-			if (!cache.getSupportedCurrencies().isSupported(userInput.getDestinationCurrency())) {
+			if (!converter.isCurrencySupported(userInput.getDestinationCurrency())) {
 				throw new ValidationException("Currency not supported - " + userInput.getDestinationCurrency());
 			}
 
@@ -52,13 +49,12 @@ public class CalculationImpl extends AbstractCalculation {
 			logger.error("Generic error" + ex);
 			throw new ValidationException("Generic Error" + ex.getMessage());
 		}
+
 	}
 
-	/**
-	 * @see AbstractCalculation.determinePath
-	 */
-	protected void determinePath(final UserInputDto userInput) throws RuleNotFoundException {
-		ConversionRules conversionRules = cache.getConversionRules();
+	@Override
+	protected void determinePath(UserInputDto userInput) throws RuleNotFoundException {
+		Map<String, Currency> currencyRuleMap = converter.getMapCurrecy();
 		String sourceCurrency = userInput.getSourceCurrency();
 		ConversionRule myrule;
 		TraversalPath path;
@@ -67,13 +63,13 @@ public class CalculationImpl extends AbstractCalculation {
 			if ( userInput.getTraversedPath().contains(sourceCurrency)) {
 				throw new RuleNotFoundException("Incorrect rule configuration");
 			}
-			List<ConversionRule> ruleList = conversionRules.getRule(sourceCurrency);
+			List<ConversionRule> ruleList = currencyRuleMap.get(sourceCurrency).getRules();
 
 			if (null == ruleList || ruleList.isEmpty()) {
 				throw new RuleNotFoundException("Rule not found exception");
 			}
 
-			int index = Collections.binarySearch(ruleList, new ConversionRule(userInput.getDestinationCurrency()));
+			int index = Collections.binarySearch(ruleList, new ConversionRuleImpl(userInput.getDestinationCurrency(),""));
 
 			if (index < 0) {
 				throw new RuleNotFoundException("Rule not found exception");
@@ -81,23 +77,21 @@ public class CalculationImpl extends AbstractCalculation {
 
 			myrule = ruleList.get(index);
 
-			if (!myrule.getLinkedTo().equals(Constants.END_RULE)) {
-				path = new TraversalPath(sourceCurrency, myrule.getLinkedTo());
+			if (!myrule.getPointer().equals(Constants.END_RULE)) {
+				path = new TraversalPath(sourceCurrency, myrule.getPointer());
 				userInput.addTraversedPath(sourceCurrency);
-				sourceCurrency = myrule.getLinkedTo();
+				sourceCurrency = myrule.getPointer();
 			} else {
 				path = new TraversalPath(sourceCurrency, userInput.getDestinationCurrency());
 			}
 
 			userInput.addTraversal(path);
-		} while (!myrule.getLinkedTo().equals(Constants.END_RULE));
+		} while (!myrule.getPointer().equals(Constants.END_RULE));
+		
 	}
 
-	/**
-	 * @see AbstractCalculation.convertAmount
-	 */
 	@Override
-	protected void convertAmount(final UserInputDto userInput) throws CurrencyConversionException {
+	protected void convertAmount(UserInputDto userInput) throws CurrencyConversionException {
 		ConversionRates rates = cache.getConversionRates();
 		ConversionRate rate;
 
@@ -130,5 +124,4 @@ public class CalculationImpl extends AbstractCalculation {
 
 		logger.info("Converted amount " + convertedAmt);
 	}
-
 }

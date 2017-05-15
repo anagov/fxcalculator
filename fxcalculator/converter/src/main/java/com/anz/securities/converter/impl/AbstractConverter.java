@@ -1,40 +1,25 @@
-package com.anz.securities.application.api;
+package com.anz.securities.converter.impl;
 
-import com.anz.securities.application.data.ApplicationCache;
-import com.anz.securities.common.exception.ApplicationInitializationException;
 import com.anz.securities.common.exception.CurrencyConversionException;
 import com.anz.securities.common.exception.FxCalculatorException;
 import com.anz.securities.common.exception.RuleNotFoundException;
 import com.anz.securities.common.exception.ValidationException;
-import com.anz.securities.currency.dto.UserInputDto;
+import com.anz.securities.converter.api.Converter;
+import com.anz.securities.converter.dto.UserInputDto;
+import com.anz.securities.entities.dto.CurrencyConverter;
 
-/**
- * Provides a template for performing the calculation
- * 
- * @author Anand Katti
- *
- */
-public abstract class AbstractCalculation implements Calculation {
+public abstract class AbstractConverter implements Converter {
+	protected CurrencyConverter converter;
 
-	protected ApplicationCache cache;
+	public AbstractConverter(CurrencyConverter convert) {
+		this.converter = convert;
+	}
 
-	/**
-	 * {@see Calculation.perform}
-	 */
-	public void perform(final UserInputDto userInput) throws FxCalculatorException {
-		initializaApplication();
+	@Override
+	public void convert(UserInputDto userInput) throws FxCalculatorException {
 		validateUserInput(userInput);
 		determinePath(userInput);
 		convertAmount(userInput);
-	}
-
-	/**
-	 * Initializes the application with data
-	 * 
-	 * @throws ApplicationInitializationException
-	 */
-	private void initializaApplication() throws ApplicationInitializationException {
-		cache = ApplicationCache.getInstance();
 	}
 
 	/**

@@ -17,8 +17,9 @@ import com.anz.securities.currency.api.CurrencyLoader;
 import com.anz.securities.currency.dto.SupportedCurrencies;
 
 /**
+ * Reads data from the XML source
  * 
- * @author xanakat
+ * @author Anand Katti
  *
  */
 public class XMLCurrencyLoader implements CurrencyLoader {
@@ -26,22 +27,29 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 	private static Logger logger = LoggerFactory.getLogger(XMLCurrencyLoader.class);
 
 	/**
-	 * 
+	 * @see CurrencyLoader.loadSupportedCurrencies
 	 */
 	public SupportedCurrencies loadSupportedCurrencies() throws DataLoaderException {
-		SupportedCurrencies supCurrencies = null;
+		SupportedCurrencies supCurrencies;
 
-		Map<String, String> supportedCurrencies = loadSupportedCurrencies(Constants.SUPPORTED_CURRENCIES_RESOURCE_FILE);
-		supCurrencies = new SupportedCurrencies(supportedCurrencies);
+		Map<String, String> supCurr = loadCurrenciesFromXML();
+		supCurrencies = new SupportedCurrencies(supCurr);
 		return supCurrencies;
 	}
 
-	private Map<String, String> loadSupportedCurrencies(final String resource) throws DataLoaderException {
+	/**
+	 * Loads supported currencies from XML
+	 * 
+	 * @param resource
+	 * @return supportedCurr
+	 * @throws DataLoaderException
+	 */
+	private Map<String, String> loadCurrenciesFromXML() throws DataLoaderException {
 		try {
-			Document doc = CommonUtil.getXMLDocument(resource);
+			Document doc = CommonUtil.getXMLDocument(Constants.SUPPORTED_CURRENCIES_RESOURCE_FILE);
 			NodeList nList = doc.getElementsByTagName(Constants.CURRENCY);
 
-			Map<String, String> supportedCurrencies = new HashMap<String, String>();
+			Map<String, String> supportedCurr = new HashMap<>();
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
 				Node nNode = nList.item(temp);
@@ -51,10 +59,10 @@ public class XMLCurrencyLoader implements CurrencyLoader {
 					Element eElement = (Element) nNode;
 					String currencyId = eElement.getAttribute(Constants.ID);
 					String decimalDisplay = eElement.getAttribute(Constants.SUPPORTED_DECIMAL);
-					supportedCurrencies.put(currencyId, decimalDisplay);
+					supportedCurr.put(currencyId, decimalDisplay);
 				}
 			}
-			return supportedCurrencies;
+			return supportedCurr;
 		} catch (Exception ex) {
 			logger.error("Generic Exception loading Currencies" + ex);
 			throw new DataLoaderException("Generic Exception  Loading Currencies" + ex.getMessage());
